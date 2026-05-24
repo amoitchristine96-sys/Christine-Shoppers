@@ -1,119 +1,475 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Checkout – Christine Shoppers</title>
   <meta name="theme-color" content="#f68b1e" />
   <meta name="description" content="Complete your purchase at Christine Shoppers Uganda." />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap"
+    rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous" />
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body id="checkout" data-nav="checkout">
-  <div id="site-topbar"></div>
-  <div id="site-header"></div>
 
-  <section class="page-banner">
-    <div class="container">
-      <nav class="breadcrumb"><a href="index.html">Home</a> / <a href="cart.html">Cart</a> / Checkout</nav>
-      <h1>Checkout</h1>
-      <p>Complete your order — fast delivery across Uganda.</p>
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <div class="d-flex align-items-center gap-2">
+        <i class="fa-solid fa-location-dot text-warning"></i>
+        <span>Deliver to <strong>Uganda</strong></span>
+        <select class="form-select form-select-sm" aria-label="Language" style="width:auto;">
+          <option value="en" selected>EN</option>
+          <option value="sw">SW</option>
+        </select>
+        <select class="form-select form-select-sm" aria-label="Currency" style="width:auto;">
+          <option value="UGX" selected>UGX</option>
+          <option value="USD">USD</option>
+        </select>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <a href="login.html"><i class="fa-solid fa-user me-1"></i> Sign In</a>
+        <a href="#"><i class="fa-solid fa-heart me-1"></i> Wishlist</a>
+        <a href="contact.html"><i class="fa-solid fa-headset me-1"></i> Help</a>
+      </div>
     </div>
-  </section>
+  </div>
 
+  <!-- Header -->
+  <header class="site-header sticky-top">
+    <div class="container d-flex align-items-center gap-3 flex-wrap">
+      <a href="index.html" class="navbar-brand">Christine <span>Shoppers</span></a>
+
+      <button class="btn-icon mobile-nav-toggle" id="mobileNavToggle" type="button" aria-label="Open menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <nav class="d-none d-lg-block flex-shrink-0">
+        <ul class="nav mb-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Products</a>
+            <ul class="dropdown-menu shadow border-0 rounded-3">
+              <li><a class="dropdown-item" href="products.html?category=Electronics">Electronics</a></li>
+              <li><a class="dropdown-item" href="products.html?category=Fashion">Fashion</a></li>
+              <li><a class="dropdown-item" href="products.html?category=Home">Home &amp; Kitchen</a></li>
+              <li><a class="dropdown-item" href="products.html?category=Beauty">Beauty</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <form class="search-wrap d-flex" role="search">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input class="form-control" type="search" placeholder="Search products, brands and more…" aria-label="Search" />
+        <button class="btn btn-primary btn-search" type="submit">Search</button>
+      </form>
+
+      <div class="header-actions ms-lg-auto">
+        <a href="user.html" class="btn-icon d-none d-md-inline-flex" aria-label="My account"><i
+            class="fa-solid fa-user"></i></a>
+        <a href="cart.html" class="btn-icon" aria-label="Cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            id="cartCount">0</span>
+        </a>
+        <button class="btn-icon" id="themeToggle" type="button" aria-label="Toggle dark mode"><i
+            class="fa-solid fa-moon"></i></button>
+      </div>
+    </div>
+
+    <nav class="mobile-nav" id="mobileNav">
+      <div class="container">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="products.html">Products</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+        <a class="nav-link" href="user.html">My Account</a>
+        <a class="nav-link" href="cart.html">Cart</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Checkout Content -->
   <main class="container pb-5">
-    <div class="checkout-steps">
-      <div class="checkout-step done"><i class="fa-solid fa-cart-shopping"></i> Cart</div>
-      <div class="checkout-step active"><i class="fa-solid fa-credit-card"></i> Payment</div>
-      <div class="checkout-step"><i class="fa-solid fa-check"></i> Done</div>
-    </div>
-
-    <div class="row g-4">
-      <div class="col-lg-7">
-        <div class="content-card mb-4">
-          <h4 class="mb-3"><i class="fa-solid fa-truck me-2 text-primary"></i> Delivery Details</h4>
-          <div class="row g-3">
-            <div class="col-md-6">
-              <label class="form-label">Full Name</label>
-              <input type="text" class="form-control" placeholder="John Doe" required />
-            </div>
-            <div class="col-md-6">
-              <label class="form-label">Phone</label>
-              <input type="tel" class="form-control" placeholder="+256 7XX XXX XXX" required />
-            </div>
-            <div class="col-12">
-              <label class="form-label">Delivery Address</label>
-              <input type="text" class="form-control" placeholder="Street, area, city" required />
-            </div>
-            <div class="col-md-6">
-              <label class="form-label">District</label>
-              <select class="form-select">
-                <option>Kampala</option>
-                <option>Wakiso</option>
-                <option>Mukono</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div class="col-md-6">
-              <label class="form-label">Delivery Notes</label>
-              <input type="text" class="form-control" placeholder="Optional" />
-            </div>
-          </div>
-        </div>
-
-        <div class="content-card">
-          <h4 class="mb-3"><i class="fa-solid fa-credit-card me-2 text-primary"></i> Payment Details</h4>
-          <form id="paymentForm">
-            <div class="mb-3">
-              <label class="form-label">Payment Method</label>
-              <select class="form-select mb-3">
-                <option>Mobile Money (MTN / Airtel)</option>
-                <option>Visa / Mastercard</option>
-                <option>Cash on Delivery</option>
-              </select>
-            </div>
-            <div class="mb-3">
-              <label for="cardName" class="form-label">Name on Card / Mobile Money</label>
-              <input type="text" class="form-control" id="cardName" required />
-            </div>
-            <div class="mb-3">
-              <label for="cardNumber" class="form-label">Card / Phone Number</label>
-              <input type="text" class="form-control" id="cardNumber" placeholder="1234 5678 9012 3456" required />
-            </div>
-            <div class="row g-3 mb-4">
-              <div class="col-md-6">
-                <label for="expDate" class="form-label">Expiry (MM/YY)</label>
-                <input type="text" class="form-control" id="expDate" placeholder="MM/YY" />
-              </div>
-              <div class="col-md-6">
-                <label for="cvc" class="form-label">CVC</label>
-                <input type="text" class="form-control" id="cvc" placeholder="123" />
-              </div>
-            </div>
-            <button type="submit" class="btn btn-primary btn-lg w-100 py-2">
-              <i class="fa-solid fa-lock me-2"></i>Place Order
-            </button>
-          </form>
-        </div>
-      </div>
-
-      <div class="col-lg-5">
-        <div class="content-card cart-summary">
-          <h4 class="mb-3">Order Summary</h4>
-          <ul id="orderItems" class="list-group list-group-flush mb-3"></ul>
-          <div class="summary-row"><span>Delivery</span><span class="text-success">Free</span></div>
-          <div class="summary-row total"><span>Total</span><span id="orderTotal">UGX 0</span></div>
-        </div>
-      </div>
+    <div id="checkoutContainer">
+      <!-- Checkout form will be displayed here -->
     </div>
   </main>
 
-  <div id="site-footer"></div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-  <script src="layout.js"></script>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <a href="index.html" class="footer-brand">Christine <span>Shoppers</span></a>
+          <p class="small mb-3">Uganda's trusted online marketplace for quality products at great prices.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="col-6 col-md-2">
+          <h6>Shop</h6>
+          <a href="products.html">All Products</a>
+          <a href="products.html?category=Fashion">Fashion</a>
+          <a href="products.html?category=Electronics">Electronics</a>
+          <a href="products.html?category=Beauty">Beauty</a>
+        </div>
+        <div class="col-6 col-md-2">
+          <h6>Account</h6>
+          <a href="login.html">Sign In</a>
+          <a href="user.html">My Account</a>
+          <a href="cart.html">Cart</a>
+          <a href="checkout.html">Checkout</a>
+        </div>
+        <div class="col-6 col-md-2">
+          <h6>Company</h6>
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact</a>
+          <a href="#">Careers</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+        <div class="col-6 col-md-2">
+          <h6>Support</h6>
+          <a href="contact.html">Help Center</a>
+          <a href="#">Returns</a>
+          <a href="#">Shipping Info</a>
+          <a href="#">Track Order</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="mb-0">© 2026 Christine Shoppers – All rights reserved. Shop smart across Uganda.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="btn btn-primary position-fixed bottom-0 end-0 m-4" style="display:none;z-index:1000;"
+    aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    crossorigin="anonymous"></script>
+  <script src="products-data.js"></script>
   <script src="script.js"></script>
-  <script src="pages.js"></script>
+
+  <script>
+    let cartItems = [];
+    let orderPlaced = false;
+
+    function loadCart() {
+      const savedCart = localStorage.getItem('cart');
+      if (savedCart) {
+        cartItems = JSON.parse(savedCart);
+      } else {
+        cartItems = [];
+      }
+
+      if (cartItems.length === 0 && !orderPlaced) {
+        window.location.href = 'cart.html';
+      }
+
+      renderCheckout();
+    }
+
+    function calculateSubtotal() {
+      return cartItems.reduce((sum, item) => sum + (item.price || 0), 0);
+    }
+
+    function calculateTax() {
+      return calculateSubtotal() * 0.18;
+    }
+
+    function calculateTotal() {
+      return calculateSubtotal() + calculateTax();
+    }
+
+    function renderCheckout() {
+      const container = document.getElementById('checkoutContainer');
+      if (!container) return;
+
+      const subtotal = calculateSubtotal();
+      const tax = calculateTax();
+      const total = calculateTotal();
+
+      let orderItemsHtml = '';
+      cartItems.forEach(item => {
+        const product = window.productsData?.find(p => p.id === item.id);
+        const productName = product ? product.name : item.name;
+        const productPrice = item.price || (product ? product.price : 0);
+
+        orderItemsHtml += `
+          <div class="order-item">
+            <span class="order-item-name">${escapeHtml(productName)}</span>
+            <span class="order-item-price">UGX ${productPrice.toLocaleString('en-UG')}</span>
+          </div>
+        `;
+      });
+
+      const html = `
+        <div class="checkout-steps">
+          <div class="checkout-step done"><i class="fa-solid fa-cart-shopping"></i> Cart</div>
+          <div class="checkout-step active"><i class="fa-solid fa-credit-card"></i> Payment</div>
+          <div class="checkout-step"><i class="fa-solid fa-check"></i> Done</div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-7">
+            <div class="content-card mb-4">
+              <h4 class="mb-3"><i class="fa-solid fa-truck me-2 text-primary"></i> Delivery Details</h4>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">Full Name</label>
+                  <input type="text" class="form-control" id="fullName" placeholder="John Doe" required />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Phone Number</label>
+                  <input type="tel" class="form-control" id="phone" placeholder="+256 7XX XXX XXX" required />
+                </div>
+                <div class="col-12">
+                  <label class="form-label">Delivery Address</label>
+                  <input type="text" class="form-control" id="address" placeholder="Street, area, city" required />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">District</label>
+                  <select class="form-select" id="district">
+                    <option value="Kampala">Kampala</option>
+                    <option value="Wakiso">Wakiso</option>
+                    <option value="Mukono">Mukono</option>
+                    <option value="Jinja">Jinja</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Delivery Notes (Optional)</label>
+                  <input type="text" class="form-control" id="notes" placeholder="E.g., Landmark, gate color" />
+                </div>
+              </div>
+            </div>
+
+            <div class="content-card">
+              <h4 class="mb-3"><i class="fa-solid fa-credit-card me-2 text-primary"></i> Payment Details</h4>
+              <form id="paymentForm">
+                <div class="mb-3">
+                  <label class="form-label">Payment Method</label>
+                  <select class="form-select mb-3" id="paymentMethod">
+                    <option value="mobile_money">Mobile Money (MTN / Airtel)</option>
+                    <option value="card">Visa / Mastercard</option>
+                    <option value="cod">Cash on Delivery</option>
+                  </select>
+                </div>
+                <div class="mb-3" id="paymentDetails">
+                  <label class="form-label" id="paymentLabel">Mobile Money Number</label>
+                  <input type="text" class="form-control" id="paymentAccount" placeholder="07XX XXX XXX" required />
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg w-100 py-2">
+                  <i class="fa-solid fa-lock me-2"></i>Place Order
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="content-card cart-summary">
+              <h4 class="mb-3">Order Summary</h4>
+              <div class="order-items-list mb-3">
+                ${orderItemsHtml}
+              </div>
+              <div class="summary-row">
+                <span>Subtotal</span>
+                <span>UGX ${subtotal.toLocaleString('en-UG')}</span>
+              </div>
+              <div class="summary-row">
+                <span>Tax (18% VAT)</span>
+                <span>UGX ${tax.toLocaleString('en-UG')}</span>
+              </div>
+              <div class="summary-row">
+                <span>Delivery</span>
+                <span class="text-success">Free</span>
+              </div>
+              <div class="summary-row total">
+                <span>Total</span>
+                <span>UGX ${total.toLocaleString('en-UG')}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      container.innerHTML = html;
+
+      // Add payment method change handler
+      const paymentMethod = document.getElementById('paymentMethod');
+      if (paymentMethod) {
+        paymentMethod.addEventListener('change', updatePaymentFields);
+      }
+
+      // Add form submit handler
+      const paymentForm = document.getElementById('paymentForm');
+      if (paymentForm) {
+        paymentForm.addEventListener('submit', handleOrderSubmit);
+      }
+    }
+
+    function updatePaymentFields() {
+      const method = document.getElementById('paymentMethod').value;
+      const paymentDetails = document.getElementById('paymentDetails');
+      const paymentLabel = document.getElementById('paymentLabel');
+      const paymentAccount = document.getElementById('paymentAccount');
+
+      if (method === 'mobile_money') {
+        paymentLabel.textContent = 'Mobile Money Number';
+        paymentAccount.placeholder = '07XX XXX XXX';
+        paymentAccount.type = 'tel';
+      } else if (method === 'card') {
+        paymentLabel.textContent = 'Card Number';
+        paymentAccount.placeholder = '1234 5678 9012 3456';
+        paymentAccount.type = 'text';
+      } else {
+        paymentLabel.textContent = 'Notes (Optional)';
+        paymentAccount.placeholder = 'Any special instructions';
+        paymentAccount.type = 'text';
+      }
+    }
+
+    function handleOrderSubmit(e) {
+      e.preventDefault();
+
+      const fullName = document.getElementById('fullName')?.value;
+      const phone = document.getElementById('phone')?.value;
+      const address = document.getElementById('address')?.value;
+      const district = document.getElementById('district')?.value;
+      const paymentMethod = document.getElementById('paymentMethod')?.value;
+      const paymentAccount = document.getElementById('paymentAccount')?.value;
+
+      // Validate required fields
+      if (!fullName || !phone || !address) {
+        alert('Please fill in all required delivery details.');
+        return;
+      }
+
+      if (paymentMethod !== 'cod' && !paymentAccount) {
+        alert('Please provide payment information.');
+        return;
+      }
+
+      // Create order object
+      const order = {
+        orderId: 'ORD-' + Date.now(),
+        date: new Date().toISOString(),
+        customer: { fullName, phone, address, district },
+        items: cartItems,
+        subtotal: calculateSubtotal(),
+        tax: calculateTax(),
+        total: calculateTotal(),
+        paymentMethod: paymentMethod,
+        paymentAccount: paymentAccount,
+        status: 'pending'
+      };
+
+      // Save order to localStorage
+      const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+      orders.push(order);
+      localStorage.setItem('orders', JSON.stringify(orders));
+
+      // Clear cart
+      localStorage.setItem('cart', JSON.stringify([]));
+
+      // Show success message
+      showOrderSuccess(order);
+    }
+
+    function showOrderSuccess(order) {
+      const container = document.getElementById('checkoutContainer');
+      container.innerHTML = `
+        <div class="success-message">
+          <i class="fa-solid fa-circle-check"></i>
+          <h2>Order Placed Successfully!</h2>
+          <p>Thank you for shopping with Christine Shoppers!</p>
+          <p class="mb-3">Your order ID: <strong>${order.orderId}</strong></p>
+          <p>Total Amount: <strong>UGX ${order.total.toLocaleString('en-UG')}</strong></p>
+          <p>We'll send delivery updates to <strong>${order.customer.phone}</strong></p>
+          <div class="mt-4">
+            <a href="index.html" class="btn btn-primary me-2">Continue Shopping</a>
+            <a href="user.html" class="btn btn-outline-primary">View Orders</a>
+          </div>
+        </div>
+      `;
+
+      // Update cart count in header
+      const cartCount = document.getElementById('cartCount');
+      if (cartCount) cartCount.textContent = '0';
+    }
+
+    function updateCartCount() {
+      const cartCount = document.getElementById('cartCount');
+      if (cartCount) {
+        const totalItems = cartItems.reduce((sum, item) => sum + (item.quantity || 1), 0);
+        cartCount.textContent = totalItems;
+      }
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // Mobile nav toggle
+    const toggleBtn = document.getElementById('mobileNavToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    if (toggleBtn && mobileNav) {
+      toggleBtn.addEventListener('click', () => {
+        mobileNav.classList.toggle('show');
+      });
+    }
+
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const icon = themeToggle.querySelector('i');
+        if (document.body.classList.contains('dark-mode')) {
+          icon.classList.remove('fa-moon');
+          icon.classList.add('fa-sun');
+        } else {
+          icon.classList.remove('fa-sun');
+          icon.classList.add('fa-moon');
+        }
+      });
+    }
+
+    // Back to top
+    const backBtn = document.getElementById('backToTop');
+    if (backBtn) {
+      window.addEventListener('scroll', () => {
+        backBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+      });
+      backBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // Initialize checkout
+    document.addEventListener('DOMContentLoaded', () => {
+      loadCart();
+      updateCartCount();
+    });
+  </script>
 </body>
+
 </html>

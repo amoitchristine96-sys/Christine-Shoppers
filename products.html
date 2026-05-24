@@ -1,21 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Products – Christine Shoppers</title>
   <meta name="theme-color" content="#f68b1e" />
-  <meta name="description" content="Browse electronics, fashion, beauty and home products at Christine Shoppers Uganda." />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <meta name="description"
+    content="Browse electronics, fashion, beauty and home products at Christine Shoppers Uganda." />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap"
+    rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous" />
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json" />
 </head>
-<body id="products" data-nav="products">
-  <div id="site-topbar"></div>
-  <div id="site-header"></div>
 
+<body id="products" data-nav="products">
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <div class="d-flex align-items-center gap-2">
+        <i class="fa-solid fa-location-dot text-warning"></i>
+        <span>Deliver to <strong>Uganda</strong></span>
+        <select class="form-select form-select-sm" aria-label="Language" style="width:auto;">
+          <option value="en" selected>EN</option>
+          <option value="sw">SW</option>
+        </select>
+        <select class="form-select form-select-sm" aria-label="Currency" style="width:auto;">
+          <option value="UGX" selected>UGX</option>
+          <option value="USD">USD</option>
+        </select>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <a href="login.html"><i class="fa-solid fa-user me-1"></i> Sign In</a>
+        <a href="#"><i class="fa-solid fa-heart me-1"></i> Wishlist</a>
+        <a href="contact.html"><i class="fa-solid fa-headset me-1"></i> Help</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header sticky-top">
+    <div class="container d-flex align-items-center gap-3 flex-wrap">
+      <a href="index.html" class="navbar-brand">Christine <span>Shoppers</span></a>
+
+      <button class="btn-icon mobile-nav-toggle" id="mobileNavToggle" type="button" aria-label="Open menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <nav class="d-none d-lg-block flex-shrink-0">
+        <ul class="nav mb-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" data-bs-toggle="dropdown">Products</a>
+            <ul class="dropdown-menu shadow border-0 rounded-3">
+              <li><a class="dropdown-item" href="#" data-category="Electronics">Electronics</a></li>
+              <li><a class="dropdown-item" href="#" data-category="Fashion">Fashion</a></li>
+              <li><a class="dropdown-item" href="#" data-category="Home">Home &amp; Kitchen</a></li>
+              <li><a class="dropdown-item" href="#" data-category="Beauty">Beauty</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <form class="search-wrap d-flex" role="search">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input class="form-control" type="search" id="searchInput" placeholder="Search products, brands and more…"
+          aria-label="Search" />
+        <button class="btn btn-primary btn-search" type="button" id="searchBtn">Search</button>
+      </form>
+
+      <div class="header-actions ms-lg-auto">
+        <a href="user.html" class="btn-icon d-none d-md-inline-flex" aria-label="My account"><i
+            class="fa-solid fa-user"></i></a>
+        <a href="cart.html" class="btn-icon" aria-label="Cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            id="cartCount">0</span>
+        </a>
+        <button class="btn-icon" id="themeToggle" type="button" aria-label="Toggle dark mode"><i
+            class="fa-solid fa-moon"></i></button>
+      </div>
+    </div>
+
+    <nav class="mobile-nav" id="mobileNav">
+      <div class="container">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="products.html">Products</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+        <a class="nav-link" href="user.html">My Account</a>
+        <a class="nav-link" href="cart.html">Cart</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Banner -->
   <section class="page-banner">
     <div class="container">
       <nav class="breadcrumb"><a href="index.html">Home</a> / Products</nav>
@@ -24,23 +111,25 @@
     </div>
   </section>
 
+  <!-- Products Content -->
   <main class="container pb-5 products-layout">
     <aside class="filter-sidebar">
       <h5><i class="fa-solid fa-sliders me-2"></i>Filters</h5>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="Electronics" id="filterElectronics" checked>
+        <input class="form-check-input filter-checkbox" type="checkbox" value="Electronics" id="filterElectronics"
+          checked>
         <label class="form-check-label" for="filterElectronics">Electronics</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="Fashion" id="filterFashion" checked>
+        <input class="form-check-input filter-checkbox" type="checkbox" value="Fashion" id="filterFashion" checked>
         <label class="form-check-label" for="filterFashion">Fashion</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="Home" id="filterHome" checked>
+        <input class="form-check-input filter-checkbox" type="checkbox" value="Home" id="filterHome" checked>
         <label class="form-check-label" for="filterHome">Home &amp; Kitchen</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="Beauty" id="filterBeauty" checked>
+        <input class="form-check-input filter-checkbox" type="checkbox" value="Beauty" id="filterBeauty" checked>
         <label class="form-check-label" for="filterBeauty">Beauty</label>
       </div>
     </aside>
@@ -49,8 +138,56 @@
     </div>
   </main>
 
-  <div id="site-footer"></div>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <a href="index.html" class="footer-brand">Christine <span>Shoppers</span></a>
+          <p class="small mb-3">Uganda's trusted online marketplace for quality products at great prices.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="col-6 col-md-2">
+          <h6>Shop</h6>
+          <a href="products.html">All Products</a>
+          <a href="products.html?category=Fashion">Fashion</a>
+          <a href="products.html?category=Electronics">Electronics</a>
+          <a href="products.html?category=Beauty">Beauty</a>
+        </div>
+        <div class="col-6 col-md-2">
+          <h6>Account</h6>
+          <a href="login.html">Sign In</a>
+          <a href="user.html">My Account</a>
+          <a href="cart.html">Cart</a>
+          <a href="checkout.html">Checkout</a>
+        </div>
+        <div class="col-6 col-md-2">
+          <h6>Company</h6>
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact</a>
+          <a href="#">Careers</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+        <div class="col-6 col-md-2">
+          <h6>Support</h6>
+          <a href="contact.html">Help Center</a>
+          <a href="#">Returns</a>
+          <a href="#">Shipping Info</a>
+          <a href="#">Track Order</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="mb-0">© 2026 Christine Shoppers – All rights reserved. Shop smart across Uganda.</p>
+      </div>
+    </div>
+  </footer>
 
+  <!-- Quick View Modal -->
   <div class="modal fade" id="quickViewModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content">
@@ -59,21 +196,344 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body row g-4">
-          <div class="col-md-5"><img id="quickViewImg" src="" alt="" class="img-fluid w-100 rounded" /></div>
+          <div class="col-md-5">
+            <div id="quickViewImage"
+              style="background: linear-gradient(135deg, #fef5e8, #fff); border-radius: 12px; padding: 40px; text-align: center;">
+              <i class="fa-solid fa-box-open" style="font-size: 4rem; color: #f68b1e;"></i>
+            </div>
+          </div>
           <div class="col-md-7">
             <h4 id="quickViewTitle" class="fw-bold"></h4>
-            <p id="quickViewPrice" class="card-price fs-4"></p>
-            <p id="quickViewDesc" class="text-muted">Quality product with fast delivery across Uganda.</p>
-            <button class="btn btn-primary add-to-cart" id="quickViewAddBtn"><i class="fa-solid fa-cart-plus me-1"></i> Add to Cart</button>
+            <p id="quickViewCategory" class="text-primary mb-2"></p>
+            <p id="quickViewPrice" class="product-price fs-2"></p>
+            <p id="quickViewDesc" class="text-muted">Premium quality product with fast delivery across Uganda.</p>
+            <button class="btn btn-primary w-100 py-2" id="quickViewAddBtn">
+              <i class="fa-solid fa-cart-plus me-2"></i>Add to Cart
+            </button>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-  <script src="layout.js"></script>
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="btn btn-primary position-fixed bottom-0 end-0 m-4" style="display:none;z-index:1000;"
+    aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    crossorigin="anonymous"></script>
   <script src="products-data.js"></script>
-  <script src="script.js"></script>
+
+  <script>
+    let currentProducts = [];
+    let currentFilters = {
+      Electronics: true,
+      Fashion: true,
+      Home: true,
+      Beauty: true
+    };
+    let searchQuery = '';
+
+    // Product data (fallback if products-data.js doesn't load)
+    const defaultProducts = [
+      { id: 1, name: "Samsung 55\" 4K Smart TV", category: "Electronics", price: 1250000, description: "Crystal clear 4K display with smart features" },
+      { id: 2, name: "HP Laptop 15.6\"", category: "Electronics", price: 1850000, description: "Core i5, 8GB RAM, 256GB SSD" },
+      { id: 3, name: "Double Door Fridge", category: "Electronics", price: 2450000, description: "Energy efficient, 450L capacity" },
+      { id: 4, name: "Men's Denim Jeans", category: "Fashion", price: 85000, description: "Comfort fit, premium quality denim" },
+      { id: 5, name: "Women's T-Shirt", category: "Fashion", price: 45000, description: "100% cotton, breathable fabric" },
+      { id: 6, name: "Leather Handbag", category: "Fashion", price: 125000, description: "Genuine leather, multiple compartments" },
+      { id: 7, name: "Non-stick Cookware Set", category: "Home", price: 185000, description: "7-piece set with utensils" },
+      { id: 8, name: "Queen Size Bedsheet", category: "Home", price: 65000, description: "100% cotton, elegant design" },
+      { id: 9, name: "Foundation Makeup Kit", category: "Beauty", price: 75000, description: "Long-lasting, natural finish" },
+      { id: 10, name: "Perfume Gift Set", category: "Beauty", price: 95000, description: "Premium fragrance collection" }
+    ];
+
+    function loadProducts() {
+      if (window.productsData && window.productsData.length > 0) {
+        currentProducts = window.productsData;
+      } else {
+        currentProducts = defaultProducts;
+      }
+      filterAndDisplayProducts();
+    }
+
+    function filterAndDisplayProducts() {
+      let filtered = currentProducts.filter(product => {
+        // Category filter
+        if (!currentFilters[product.category]) return false;
+
+        // Search filter
+        if (searchQuery) {
+          const query = searchQuery.toLowerCase();
+          return product.name.toLowerCase().includes(query) ||
+            product.category.toLowerCase().includes(query) ||
+            (product.description && product.description.toLowerCase().includes(query));
+        }
+
+        return true;
+      });
+
+      displayProducts(filtered);
+    }
+
+    function getProductIcon(category) {
+      switch (category) {
+        case 'Electronics': return 'fa-laptop';
+        case 'Fashion': return 'fa-shirt';
+        case 'Home': return 'fa-couch';
+        case 'Beauty': return 'fa-spa';
+        default: return 'fa-box-open';
+      }
+    }
+
+    function displayProducts(products) {
+      const grid = document.getElementById('productGrid');
+      if (!grid) return;
+
+      if (products.length === 0) {
+        grid.innerHTML = `
+          <div class="col-12">
+            <div class="no-products">
+              <i class="fa-solid fa-search"></i>
+              <h4>No products found</h4>
+              <p>Try adjusting your filters or search term</p>
+              <button class="btn btn-primary" onclick="resetFilters()">Reset Filters</button>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      let html = '';
+      products.forEach(product => {
+        const icon = getProductIcon(product.category);
+        html += `
+          <div class="col-md-6 col-lg-4">
+            <div class="product-card" onclick="quickView(${product.id})">
+              <div class="card-img-wrap d-flex align-items-center justify-content-center" style="height: 200px; font-size: 4rem; color: var(--primary);">
+                <i class="fa-solid ${icon}"></i>
+              </div>
+              <div class="card-body">
+                <div class="card-category">${product.category}</div>
+                <div class="card-title">${escapeHtml(product.name)}</div>
+                <div class="card-price">UGX ${product.price.toLocaleString('en-UG')}</div>
+                <button class="btn btn-primary add-to-cart mt-auto" onclick="event.stopPropagation(); addToCart(${product.id})">
+                  <i class="fa-solid fa-cart-plus me-2"></i>Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      grid.innerHTML = html;
+    }
+
+    function addToCart(productId) {
+      const product = currentProducts.find(p => p.id === productId);
+      if (!product) return;
+
+      let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+
+      // Check if product already in cart
+      const existingItem = cart.find(item => item.id === productId);
+      if (existingItem) {
+        existingItem.quantity = (existingItem.quantity || 1) + 1;
+      } else {
+        cart.push({
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          category: product.category,
+          quantity: 1
+        });
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCount();
+
+      // Show notification
+      showNotification(`${product.name} added to cart!`);
+    }
+
+    function showNotification(message) {
+      // Create temporary notification
+      const notification = document.createElement('div');
+      notification.className = 'alert alert-success position-fixed top-0 end-0 m-3';
+      notification.style.zIndex = '9999';
+      notification.style.animation = 'slideIn 0.3s ease';
+      notification.innerHTML = `<i class="fa-solid fa-check-circle me-2"></i>${message}`;
+      document.body.appendChild(notification);
+
+      setTimeout(() => {
+        notification.remove();
+      }, 3000);
+    }
+
+    function quickView(productId) {
+      const product = currentProducts.find(p => p.id === productId);
+      if (!product) return;
+
+      document.getElementById('quickViewTitle').textContent = product.name;
+      document.getElementById('quickViewCategory').textContent = product.category;
+      document.getElementById('quickViewPrice').textContent = `UGX ${product.price.toLocaleString('en-UG')}`;
+      document.getElementById('quickViewDesc').textContent = product.description || 'Premium quality product with fast delivery across Uganda.';
+
+      const quickViewAddBtn = document.getElementById('quickViewAddBtn');
+      quickViewAddBtn.onclick = () => {
+        addToCart(product.id);
+        const modal = bootstrap.Modal.getInstance(document.getElementById('quickViewModal'));
+        if (modal) modal.hide();
+      };
+
+      new bootstrap.Modal(document.getElementById('quickViewModal')).show();
+    }
+
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      const cartCount = document.getElementById('cartCount');
+      if (cartCount) {
+        const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+        cartCount.textContent = totalItems;
+      }
+    }
+
+    function resetFilters() {
+      currentFilters = {
+        Electronics: true,
+        Fashion: true,
+        Home: true,
+        Beauty: true
+      };
+      searchQuery = '';
+      document.getElementById('searchInput').value = '';
+
+      // Update checkboxes
+      document.querySelectorAll('.filter-checkbox').forEach(cb => {
+        cb.checked = true;
+      });
+
+      filterAndDisplayProducts();
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // Mobile nav toggle
+    const toggleBtn = document.getElementById('mobileNavToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    if (toggleBtn && mobileNav) {
+      toggleBtn.addEventListener('click', () => {
+        mobileNav.classList.toggle('show');
+      });
+    }
+
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const icon = themeToggle.querySelector('i');
+        if (document.body.classList.contains('dark-mode')) {
+          icon.classList.remove('fa-moon');
+          icon.classList.add('fa-sun');
+        } else {
+          icon.classList.remove('fa-sun');
+          icon.classList.add('fa-moon');
+        }
+      });
+    }
+
+    // Back to top
+    const backBtn = document.getElementById('backToTop');
+    if (backBtn) {
+      window.addEventListener('scroll', () => {
+        backBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+      });
+      backBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // Filter checkboxes
+    document.querySelectorAll('.filter-checkbox').forEach(cb => {
+      cb.addEventListener('change', (e) => {
+        currentFilters[e.target.value] = e.target.checked;
+        filterAndDisplayProducts();
+      });
+    });
+
+    // Search functionality
+    const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.getElementById('searchBtn');
+
+    if (searchBtn) {
+      searchBtn.addEventListener('click', () => {
+        searchQuery = searchInput?.value || '';
+        filterAndDisplayProducts();
+      });
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          searchQuery = searchInput.value;
+          filterAndDisplayProducts();
+        }
+      });
+    }
+
+    // Category links from dropdown
+    document.querySelectorAll('[data-category]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const category = link.getAttribute('data-category');
+        // Reset all filters
+        currentFilters = {
+          Electronics: false,
+          Fashion: false,
+          Home: false,
+          Beauty: false
+        };
+        currentFilters[category] = true;
+
+        // Update checkboxes
+        document.querySelectorAll('.filter-checkbox').forEach(cb => {
+          cb.checked = currentFilters[cb.value];
+        });
+
+        filterAndDisplayProducts();
+      });
+    });
+
+    // Check URL parameters for category filter
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryParam = urlParams.get('category');
+    if (categoryParam && currentFilters.hasOwnProperty(categoryParam)) {
+      currentFilters = {
+        Electronics: false,
+        Fashion: false,
+        Home: false,
+        Beauty: false
+      };
+      currentFilters[categoryParam] = true;
+
+      // Update checkboxes
+      document.querySelectorAll('.filter-checkbox').forEach(cb => {
+        cb.checked = currentFilters[cb.value];
+      });
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      loadProducts();
+      updateCartCount();
+    });
+  </script>
 </body>
+
 </html>
