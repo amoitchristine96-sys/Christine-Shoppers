@@ -1,0 +1,7 @@
+{
+  "name": "eshop-website",
+  "private": true,
+  "scripts": {
+    "start": "npx --yes http-server WebContent -p 8888 -o -c-1"
+  }
+}
